@@ -1,0 +1,5 @@
+when CLIENT_ACCEPTED {
+ if { [IP::addr [IP::client_addr] equals IPที่จะทำการbypass] } {
+ pool ชื่อ service group ของ server ที่เราต้องการจะส่ง packet กลับไปให้ 
+ }
+}
