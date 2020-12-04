@@ -1,5 +1,18 @@
+ถ้าจะใส่ client IP อื่นๆเพิ่มให้ทำดังนี้
 when CLIENT_ACCEPTED {
- if { [IP::addr [IP::client_addr] equals IPที่จะทำการbypass] } {
+ if { [IP::addr [IP::client_addr] equals IPที่1ที่จะทำการbypass] } {
  pool ชื่อ service group ของ server ที่เราต้องการจะส่ง packet กลับไปให้ 
- }
+ } elseif { [IP::addr [IP::client_addr] equals IPที่2ที่จะทำการbypass] } {
+pool ชื่อ service group ของ server ที่เราต้องการจะส่ง packet กลับไปให้
+} else if { [IP::addr [IP::client_addr] equals IPทื่nที่จะทำการbypass] } {
+pool ชื่อ service group ของ server ที่เราต้องการจะส่ง packet กลับไปให้
+} 
+}
+ตัวอย่าง ต้องการจะ bypass client IP 10.2.4.12 และ 10.2.4.4
+when CLIENT_ACCEPTED {
+if { [IP::addr [IP::client_addr] equals 10.2.4.12] } {
+pool aflex
+} elseif { [IP::addr [IP::client_addr] equals 10.2.4.4] } {
+pool aflex
+}
 }
